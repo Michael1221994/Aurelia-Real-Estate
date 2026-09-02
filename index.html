@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" class="lenis lenis-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Aurelia Estate | Pacific Palisades</title>
+
+  <!-- Google Fonts: Instrument Serif & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="cursor"></div>
+  <div class="custom-cursor-follower" id="cursorFollower"></div>
+
+  <!-- Ambient Sound Toggle & Header -->
+  <header class="header">
+    <a href="#" class="logo">
+      <span class="logo-brand">AURELIA</span>
+      <span class="logo-sub">RESIDENCES</span>
+    </a>
+
+    <div class="nav-middle">
+      <span class="property-tag">PACIFIC PALISADES, CA &bull; $34,500,000</span>
+    </div>
+
+    <div class="header-actions">
+      <button class="sound-toggle" id="soundBtn" aria-label="Toggle Atmosphere Sound">
+        <span class="sound-wave">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </span>
+        <span class="sound-text">Atmosphere</span>
+      </button>
+
+      <button class="btn-primary" id="openInquireBtn">
+        <span>Request Private Tour</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==============================================
+       HERO: 3D MULTIPLANE ARRIVAL (PINNED SCROLL)
+  ============================================== -->
+  <div class="hero-scroll-track" id="heroTrack">
+    <div class="hero-sticky-viewport" id="heroViewport">
+
+      <!-- Multiplane Stacked Layers -->
+      <div class="multiplane-scene" id="multiplaneScene">
+        
+        <!-- Layer 0: Twilight Coastal Sky -->
+        <div class="layer layer-sky" data-depth="0.02">
+          <div class="sky-backdrop"></div>
+          <div class="sky-stars"></div>
+        </div>
+
+        <!-- Layer 1: Distant Ocean Horizon & Mountains -->
+        <div class="layer layer-horizon" data-depth="0.04">
+          <div class="horizon-mountains"></div>
+          <div class="ocean-surface">
+            <div class="ocean-shimmer"></div>
+          </div>
+        </div>
+
+        <!-- Layer 2: Sun Glow / Atmospheric Lighting -->
+        <div class="layer layer-atmosphere">
+          <div class="sun-glow"></div>
+          <div class="coastal-mist"></div>
+        </div>
+
+        <!-- Layer 3: The Architectural Villa Facade -->
+        <div class="layer layer-villa" data-depth="0.07">
+          <div class="villa-structure">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop" alt="The Aurelia Villa" class="villa-img" />
+            <div class="interior-glow"></div>
+          </div>
+        </div>
+
+        <!-- Layer 4: Infinity Pool & Cantilevered Terrace -->
+        <div class="layer layer-pool" data-depth="0.11">
+          <div class="infinity-pool">
+            <div class="water-glass"></div>
+            <div class="water-reflection"></div>
+          </div>
+        </div>
+
+        <!-- Layer 5: Foreground Architectural Framing (Trees & Stone Pillars) -->
+        <div class="layer layer-foreground-left" data-depth="-0.18">
+          <div class="framing-tree left-tree"></div>
+        </div>
+
+        <div class="layer layer-foreground-right" data-depth="-0.22">
+          <div class="framing-tree right-tree"></div>
+          <div class="stone-pillar"></div>
+        </div>
+
+        <!-- Layer 6: 3D Lens Flare Discs -->
+        <div class="layer layer-lensflare">
+          <div class="flare-container" id="flareContainer">
+            <div class="flare-disc disc-1"></div>
+            <div class="flare-disc disc-2"></div>
+            <div class="flare-disc disc-3"></div>
+            <div class="flare-disc disc-4"></div>
+          </div>
+        </div>
+
+        <!-- Layer 7: Cinematic Edge Vignette -->
+        <div class="cinematic-vignette"></div>
+
+      </div>
+
+      <!-- Hero Floating Editorial Content -->
+      <div class="hero-overlay" id="heroOverlay">
+        <div class="hero-tag">PRIVATE RESIDENCE &bull; ESTATE NO. 07</div>
+        <h1 class="hero-title">
+          <span class="title-line">Where Architecture</span>
+          <span class="title-line italic-line">Meets Horizon</span>
+        </h1>
+        <p class="hero-description">
+          A sculptural sanctuary carved into the cliffs of Pacific Palisades. 11,200 square feet of monolithic travertine, seamless structural glass, and endless Pacific vistas.
+        </p>
+
+        <!-- Scroll Indicator -->
+        <div class="hero-scroll-prompt">
+          <div class="mouse-icon">
+            <div class="wheel"></div>
+          </div>
+          <span class="scroll-label">Scroll to Enter Residence</span>
+        </div>
+      </div>
+
+      <!-- Pinned Floating Specs (Reveals during Scroll Zoom) -->
+      <div class="hero-specs-deck" id="heroSpecsDeck">
+        <div class="spec-card">
+          <span class="spec-num">11,200</span>
+          <span class="spec-label">Interior Sq. Ft.</span>
+        </div>
+        <div class="spec-card">
+          <span class="spec-num">6</span>
+          <span class="spec-label">Private Suites</span>
+        </div>
+        <div class="spec-card">
+          <span class="spec-num">110 FT</span>
+          <span class="spec-label">Horizon Infinity Pool</span>
+        </div>
+        <div class="spec-card">
+          <span class="spec-num">0.82</span>
+          <span class="spec-label">Cliffside Acreage</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==============================================
+       SECTION 2: THE CURATORIAL STATEMENT / PHILOSOPHY
+  ============================================== -->
+  <section class="section philosophy-section" id="philosophy">
+    <div class="container">
+      <div class="section-badge">DESIGN PHILOSOPHY</div>
+      <h2 class="statement-text" id="scrubStatement">
+        "Architecture is not merely shelter; it is the physical medium through which light, ocean, and human perception are unified into stillness."
+      </h2>
+      <div class="philosophy-meta">
+        <span class="architect-credit">Designed in collaboration with Studio Olson &bull; Completed 2025</span>
+        <div class="signature-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SECTION 3: SPATIAL GALLERY (HORIZONTAL PARALLAX)
+  ============================================== -->
+  <section class="section spaces-section" id="spaces">
+    <div class="container">
+      <div class="spaces-header">
+        <div>
+          <div class="section-badge">INTERIOR PROGRAM</div>
+          <h2 class="section-title">The Curated Spaces</h2>
+        </div>
+        <p class="spaces-intro">Every room is calibrated for morning ocean mist and evening twilight luminescence.</p>
+      </div>
+
+      <div class="spaces-grid">
+        <!-- Space Card 1 -->
+        <div class="space-card" data-space="salon">
+          <div class="space-media">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop" alt="The Grand Salon" />
+            <div class="space-overlay"></div>
+          </div>
+          <div class="space-info">
+            <span class="space-index">01 / PRIMARY PAVILION</span>
+            <h3 class="space-title">The Grand Ocean Salon</h3>
+            <p class="space-caption">24-foot motorized Swiss glass facades disappear into concrete pocket walls, creating an uninterrupted 90-foot open-air living expanse.</p>
+          </div>
+        </div>
+
+        <!-- Space Card 2 -->
+        <div class="space-card" data-space="kitchen">
+          <div class="space-media">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" alt="Culinary Gallery" />
+            <div class="space-overlay"></div>
+          </div>
+          <div class="space-info">
+            <span class="space-index">02 / CULINARY LAB</span>
+            <h3 class="space-title">Monolithic Marble Kitchen</h3>
+            <p class="space-caption">Honed Calacatta Paonazzo marble island with integrated induction, custom fluted walnut cabinetry, and separate hidden chef’s preparation scullery.</p>
+          </div>
+        </div>
+
+        <!-- Space Card 3 -->
+        <div class="space-card" data-space="suite">
+          <div class="space-media">
+            <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?q=80&w=2070&auto=format&fit=crop" alt="Primary Suite" />
+            <div class="space-overlay"></div>
+          </div>
+          <div class="space-info">
+            <span class="space-index">03 / PRIVATE WING</span>
+            <h3 class="space-title">The Cantilevered Sanctuary</h3>
+            <p class="space-caption">Suspended over the cliff edge with dual stone-clad walk-in dressing galleries, basalt soaking tub, and a private wraparound sunset deck.</p>
+          </div>
+        </div>
+
+        <!-- Space Card 4 -->
+        <div class="space-card" data-space="wellness">
+          <div class="space-media">
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format&fit=crop" alt="Wellness Sanctuary" />
+            <div class="space-overlay"></div>
+          </div>
+          <div class="space-info">
+            <span class="space-index">04 / SUBTERRANEAN</span>
+            <h3 class="space-title">Wellness & Cellar Vault</h3>
+            <p class="space-caption">Cedar sauna, cold-plunge hydrotherapy suite, and an illuminated 1,200-bottle glass wine room excavated directly into the cliff stone.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SECTION 4: INTERACTIVE FLOORPLAN & SPATIAL FLOW
+  ============================================== -->
+  <section class="section floorplan-section" id="floorplan">
+    <div class="container">
+      <div class="section-badge">SPATIAL BLUEPRINT</div>
+      <h2 class="section-title">Architectural Layout</h2>
+      <p class="floorplan-desc">Select a level to inspect spatial organization, sightlines, and circulation.</p>
+
+      <!-- Floor Selector Tabs -->
+      <div class="floor-tabs">
+        <button class="floor-tab active" data-floor="level1">Level 01 &bull; Entertaining & Pool</button>
+        <button class="floor-tab" data-floor="level2">Level 02 &bull; Private Suites</button>
+        <button class="floor-tab" data-floor="level3">Sub-Level &bull; Spa & Cellar</button>
+      </div>
+
+      <!-- Floorplan Viewer -->
+      <div class="floorplan-display">
+        <div class="blueprint-canvas" id="blueprintCanvas">
+          <!-- Dynamic SVG Blueprint will render here -->
+          <div class="blueprint-grid"></div>
+          
+          <!-- Hotspot Pins -->
+          <div class="hotspot" style="top: 40%; left: 35%;" data-title="Grand Salon" data-desc="Double-height reception with fireplace">
+            <span class="hotspot-pulse"></span>
+            <span class="hotspot-dot"></span>
+            <span class="hotspot-tag">Grand Salon</span>
+          </div>
+
+          <div class="hotspot" style="top: 65%; left: 60%;" data-title="Zero-Edge Pool" data-desc="110-ft cantilevered lap pool">
+            <span class="hotspot-pulse"></span>
+            <span class="hotspot-dot"></span>
+            <span class="hotspot-tag">Infinity Pool</span>
+          </div>
+
+          <div class="hotspot" style="top: 30%; left: 70%;" data-title="Chef Kitchen" data-desc="Paonazzo marble culinary studio">
+            <span class="hotspot-pulse"></span>
+            <span class="hotspot-dot"></span>
+            <span class="hotspot-tag">Kitchen</span>
+          </div>
+        </div>
+
+        <div class="floorplan-details" id="floorDetails">
+          <h4 class="floor-name">Level 01 &bull; Main Pavilion</h4>
+          <p class="floor-text">Designed for effortless indoor-outdoor flow, Level 01 connects the arrival motor court with the primary living room, outdoor dining pavilion, and horizon pool.</p>
+          <ul class="floor-metrics">
+            <li><span>Gross Area</span><strong>6,400 Sq. Ft.</strong></li>
+            <li><span>Ceiling Clearance</span><strong>14' – 22' Vaulted</strong></li>
+            <li><span>Exterior Terraces</span><strong>3,800 Sq. Ft.</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SECTION 5: SPECIFICATIONS & MATERIALITY ACCORDION
+  ============================================= -->
+  <section class="section specs-section" id="specifications">
+    <div class="container">
+      <div class="specs-grid-layout">
+        <div class="specs-left">
+          <div class="section-badge">MATERIALITY & CRAFT</div>
+          <h2 class="section-title">Built for Generations</h2>
+          <p class="specs-p">Every material was specified for durability against marine coastal air while aging with natural patina.</p>
+          
+          <div class="material-swatches">
+            <div class="swatch" title="Roman Travertine">
+              <span class="swatch-color" style="background: #dfd7cc;"></span>
+              <span class="swatch-name">Tivoli Travertine</span>
+            </div>
+            <div class="swatch" title="Aged Bronze">
+              <span class="swatch-color" style="background: #4a3e35;"></span>
+              <span class="swatch-name">Brushed Bronze</span>
+            </div>
+            <div class="swatch" title="European White Oak">
+              <span class="swatch-color" style="background: #a8937b;"></span>
+              <span class="swatch-name">Quarter-Sawn Oak</span>
+            </div>
+            <div class="swatch" title="Structural Glass">
+              <span class="swatch-color" style="background: #8fa4b0;"></span>
+              <span class="swatch-name">Low-Iron Glass</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="specs-right">
+          <div class="accordion">
+            <!-- Item 1 -->
+            <div class="acc-item active">
+              <div class="acc-header">
+                <span class="acc-title">Structural Glazing & Automation</span>
+                <span class="acc-icon">+</span>
+              </div>
+              <div class="acc-content">
+                <p>Triple-laminated acoustic low-iron glass panels engineered by Sky-Frame Switzerland. Integrated with hidden motorized tracks and whisper-quiet magnetic drive motors controllable via smartphone or flush wall sensors.</p>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="acc-item">
+              <div class="acc-header">
+                <span class="acc-title">Climate, Energy & Sustainability</span>
+                <span class="acc-icon">+</span>
+              </div>
+              <div class="acc-content">
+                <p>Concealed geothermal heating and cooling system paired with 18kW hidden roof-integrated solar arrays and dual Tesla Powerwall industrial storage cells providing 72 hours of complete off-grid autonomy.</p>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="acc-item">
+              <div class="acc-header">
+                <span class="acc-title">Security & Motor Court</span>
+                <span class="acc-icon">+</span>
+              </div>
+              <div class="acc-content">
+                <p>Private gated entry with biometric access control, subterranean 6-car temperature-regulated gallery garage with turntable, and 360-degree perimeter thermal imaging cameras.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SECTION 6: PRIVATE VIEWING ACQUISITION CTA
+  ============================================== -->
+  <section class="section cta-section">
+    <div class="cta-backdrop">
+      <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop" alt="Aurelia Estate Twilight" />
+      <div class="cta-overlay"></div>
+    </div>
+
+    <div class="container cta-container">
+      <span class="cta-tag">CONFIDENTIAL OFFERING</span>
+      <h2 class="cta-heading">Experience The Aurelia In Person</h2>
+      <p class="cta-sub">Private architectural previews are arranged exclusively for qualified buyers by appointment.</p>
+      
+      <div class="cta-buttons">
+        <button class="btn-primary large" id="ctaInquireBtn">
+          <span>Schedule Private Viewing</span>
+        </button>
+        <a href="tel:+13105550198" class="btn-secondary">
+          <span>Direct Inquiries: +1 (310) 555-0198</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <span class="footer-logo">AURELIA</span>
+        <p class="footer-copy">&copy; 2025 Aurelia Residences LLC. Offered exclusively by Sotheby’s International Realty. All rights reserved.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">Legal & Confidentiality</a>
+        <a href="#">Architectural Drawings</a>
+        <a href="#">Press Kit</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==============================================
+       MODAL: PRIVATE VIEWING INQUIRY DRAWER
+  ============================================== -->
+  <div class="modal-backdrop" id="inquireModal">
+    <div class="modal-card">
+      <button class="modal-close" id="closeModalBtn">&times;</button>
+      <div class="modal-header">
+        <span class="modal-badge">CONFIDENTIAL INQUIRY</span>
+        <h3 class="modal-title">Request Private Tour</h3>
+        <p class="modal-desc">Kindly provide your contact details. A private client advisor will respond within 4 business hours.</p>
+      </div>
+
+      <form class="inquire-form" id="inquireForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" required placeholder="Alexander" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" required placeholder="Vanderbilt" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" required placeholder="alexander@domain.com" />
+        </div>
+
+        <div class="form-group">
+          <label>Telephone</label>
+          <input type="tel" required placeholder="+1 (555) 000-0000" />
+        </div>
+
+        <div class="form-group">
+          <label>Representation Status</label>
+          <select>
+            <option>Purchasing as Principal</option>
+            <option>Representing Principal as Broker / Agent</option>
+            <option>Family Office Representative</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-primary submit-btn">
+          <span>Submit Confidential Request</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

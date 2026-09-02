@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Environment / Temp
+.env
+.env.local
+.DS_Store
+Thumbs.db
+*.log
+
+# Editor & System
+.vscode/
+.idea/
+.system_generated/
+scratch/
