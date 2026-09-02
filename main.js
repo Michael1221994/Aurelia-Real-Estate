@@ -84,19 +84,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Scrubbed layer choreography
   heroTl
-    // Phase 1: Foreground framing trees and stone pillar part away as we step forward
-    .to('.layer-foreground-left', { x: -120, scale: 1.35, opacity: 0, ease: 'none' }, 0)
-    .to('.layer-foreground-right', { x: 120, scale: 1.35, opacity: 0, ease: 'none' }, 0)
+    // Phase 1: Foreground framing columns & olive trees expand outward past the camera
+    .to('.layer-foreground-frame', { scale: 1.5, opacity: 0, ease: 'none' }, 0)
 
-    // Phase 1: Villa architecture pulls closer
-    .to('.layer-villa', { scale: 1.28, y: -25, ease: 'none' }, 0)
-
-    // Phase 1: Infinity pool expands forward into view
-    .to('.layer-pool', { scale: 1.18, y: 20, ease: 'none' }, 0)
+    // Phase 1: Villa architecture pulls closer into view
+    .to('.layer-villa', { scale: 1.25, y: -20, ease: 'none' }, 0)
 
     // Phase 1: Horizon ocean & distant mountains remain steady
-    .to('.layer-horizon', { scale: 1.05, y: -10, ease: 'none' }, 0)
-    .to('.layer-sky', { y: -18, ease: 'none' }, 0)
+    .to('.layer-horizon', { scale: 1.04, y: -8, ease: 'none' }, 0)
+    .to('.layer-sky', { y: -15, ease: 'none' }, 0)
 
     // Keep hero text ("Where Architecture Meets Horizon" + "A sculptural sanctuary...")
     // fully legible initially, then fade out gently as camera pushes in

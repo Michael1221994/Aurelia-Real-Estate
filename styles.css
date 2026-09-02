@@ -422,94 +422,42 @@ img {
 
 .villa-structure {
   position: absolute;
-  bottom: 10%;
-  left: 5%;
-  width: 88vw;
-  max-width: 1550px;
-  height: 65vh;
-  border-radius: 8px;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
 }
 
 .villa-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 60%;
-  filter: contrast(105%) brightness(95%);
+  object-position: center;
+  filter: contrast(102%) brightness(96%);
 }
 
 .interior-glow {
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(10, 12, 16, 0.8) 0%, transparent 40%, rgba(255, 200, 120, 0.06) 100%);
+  background: linear-gradient(0deg, rgba(10, 12, 16, 0.7) 0%, transparent 40%, rgba(255, 200, 120, 0.04) 100%);
   mix-blend-mode: multiply;
 }
 
-/* 4. Infinity Pool & Cantilevered Terrace */
-.layer-pool {
-  z-index: 5;
+/* 4. Foreground Framing (Travertine Columns & Olive Trees) */
+.layer-foreground-frame {
+  z-index: 7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-origin: center center;
 }
 
-.infinity-pool {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+.framing-columns-img {
   width: 100%;
-  height: 22vh;
-  background: linear-gradient(180deg, rgba(16, 28, 44, 0.7) 0%, rgba(8, 14, 24, 0.95) 100%);
-  backdrop-filter: blur(2px);
-  border-top: 1px solid rgba(197, 168, 128, 0.3);
-  box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.6);
-}
-
-.water-reflection {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(197, 168, 128, 0.2) 0%, transparent 70%);
-  mix-blend-mode: screen;
-}
-
-/* 5. Foreground Framing (Trees & Stone Pillars) */
-.layer-foreground-left {
-  z-index: 7;
-}
-
-.left-tree {
-  position: absolute;
-  bottom: -5%;
-  left: -8vw;
-  width: 28vw;
-  height: 75vh;
-  background: linear-gradient(90deg, rgba(8, 10, 14, 0.98) 0%, rgba(8, 10, 14, 0.7) 70%, transparent 100%);
-  clip-path: polygon(0 0, 80% 15%, 65% 35%, 85% 55%, 60% 75%, 90% 90%, 0 100%);
-  filter: blur(1px);
-}
-
-.layer-foreground-right {
-  z-index: 7;
-}
-
-.right-tree {
-  position: absolute;
-  bottom: -5%;
-  right: -5vw;
-  width: 22vw;
-  height: 60vh;
-  background: linear-gradient(270deg, rgba(8, 10, 14, 0.98) 0%, rgba(8, 10, 14, 0.6) 60%, transparent 100%);
-  clip-path: polygon(100% 0, 20% 25%, 35% 45%, 15% 65%, 40% 85%, 100% 100%);
-  filter: blur(1px);
-}
-
-.stone-pillar {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 14vw;
-  height: 45vh;
-  background: linear-gradient(270deg, #10131a 0%, #161a22 100%);
-  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
 }
 
 /* 6. 3D Lens Flare Discs */
