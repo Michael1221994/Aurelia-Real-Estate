@@ -67,45 +67,52 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. GSAP Multiplane Arrival Hero Timeline
   gsap.registerPlugin(ScrollTrigger);
 
+  const isMobile = window.innerWidth <= 768;
+
   const heroTl = gsap.timeline({
     scrollTrigger: {
       trigger: '#heroTrack',
       start: 'top top',
-      end: 'bottom bottom',
-      scrub: 1.2, // Heavy, high-end physical damping
+      end: isMobile ? '+=110%' : '+=180%',
+      pin: '#heroViewport',
+      pinSpacing: true,
+      scrub: isMobile ? 0.7 : 1.1,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
     },
   });
 
   // Scrubbed layer choreography
   heroTl
     // Phase 1: Foreground framing trees and stone pillar part away as we step forward
-    .to('.layer-foreground-left', { x: -140, scale: 1.45, opacity: 0, ease: 'none' }, 0)
-    .to('.layer-foreground-right', { x: 140, scale: 1.45, opacity: 0, ease: 'none' }, 0)
+    .to('.layer-foreground-left', { x: -120, scale: 1.35, opacity: 0, ease: 'none' }, 0)
+    .to('.layer-foreground-right', { x: 120, scale: 1.35, opacity: 0, ease: 'none' }, 0)
 
-    // Phase 1: Villa architecture pulls closer, establishing presence
-    .to('.layer-villa', { scale: 1.34, y: -40, ease: 'none' }, 0)
+    // Phase 1: Villa architecture pulls closer
+    .to('.layer-villa', { scale: 1.28, y: -25, ease: 'none' }, 0)
 
     // Phase 1: Infinity pool expands forward into view
-    .to('.layer-pool', { scale: 1.25, y: 30, ease: 'none' }, 0)
+    .to('.layer-pool', { scale: 1.18, y: 20, ease: 'none' }, 0)
 
-    // Phase 1: Horizon ocean & distant mountains remain steady (scale differential)
-    .to('.layer-horizon', { scale: 1.06, y: -15, ease: 'none' }, 0)
-    .to('.layer-sky', { y: -25, ease: 'none' }, 0)
+    // Phase 1: Horizon ocean & distant mountains remain steady
+    .to('.layer-horizon', { scale: 1.05, y: -10, ease: 'none' }, 0)
+    .to('.layer-sky', { y: -18, ease: 'none' }, 0)
 
-    // Phase 1: Hero title & prompt glide up and fade out
-    .to('#heroOverlay', { opacity: 0, y: -80, filter: 'blur(8px)', ease: 'none' }, 0)
+    // Keep hero text ("Where Architecture Meets Horizon" + "A sculptural sanctuary...")
+    // fully legible initially, then fade out gently as camera pushes in
+    .to('#heroOverlay', { opacity: 0, y: -50, filter: 'blur(5px)', duration: 0.35, ease: 'power2.inOut' }, 0.22)
 
     // Phase 2: Reveal the Pinned Luxury Property Metric Deck
     .fromTo(
       '#heroSpecsDeck',
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' },
-      0.35
+      { opacity: 0, y: 35 },
+      { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' },
+      0.45
     )
 
-    // Phase 3: Hold specs briefly, then gently exit as user approaches Section 2
-    .to('#heroSpecsDeck', { opacity: 0, y: -30, duration: 0.3, ease: 'power2.in' }, 0.8)
-    .to('.multiplane-scene', { scale: 1.08, filter: 'brightness(0.75)', ease: 'none' }, 0.7);
+    // Phase 3: Hold specs briefly, then gently exit as next section glides up
+    .to('#heroSpecsDeck', { opacity: 0, y: -25, duration: 0.22, ease: 'power2.in' }, 0.82)
+    .to('.multiplane-scene', { scale: 1.05, filter: 'brightness(0.72)', ease: 'none' }, 0.8);
 
   // 4. Interactive Mouse Parallax & Gyro Physics Loop
   let targetNormX = 0;

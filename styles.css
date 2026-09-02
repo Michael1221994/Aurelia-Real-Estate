@@ -291,23 +291,19 @@ img {
    HERO: 3D MULTIPLANE ARRIVAL TRACK (PINNED SCROLL)
    ========================================================================== */
 .hero-scroll-track {
-  height: 320vh; /* Scrubbed length */
   position: relative;
   z-index: 10;
   width: 100%;
   max-width: 100%;
-  overflow: clip;
 }
 
 .hero-sticky-viewport {
-  position: sticky;
-  top: 0;
+  position: relative;
   width: 100%;
   max-width: 100%;
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
-  contain: paint;
   background-color: var(--bg-dark);
 }
 
@@ -1422,12 +1418,38 @@ img {
     display: inline;
   }
 
+  /* Villa & Scene Mobile Tuning */
+  .villa-structure {
+    width: 100%;
+    max-width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .villa-img {
+    object-position: center 35%;
+  }
+
+  .infinity-pool {
+    height: 24vh;
+  }
+
+  .interior-glow {
+    background: linear-gradient(0deg, rgba(10, 12, 16, 0.92) 0%, rgba(10, 12, 16, 0.4) 50%, rgba(10, 12, 16, 0.75) 100%);
+  }
+
   /* Hero Section Mobile Tuning */
   .hero-overlay {
-    padding-left: 5vw;
-    padding-right: 5vw;
+    padding-left: 6vw;
+    padding-right: 6vw;
+    padding-top: 5rem;
+    padding-bottom: 2rem;
     max-width: 100%;
     width: 100%;
+    justify-content: center;
+    z-index: 20;
   }
 
   .hero-tag {
@@ -1459,23 +1481,23 @@ img {
   }
 
   .hero-specs-deck {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     left: 4vw;
     right: 4vw;
-    bottom: 2.5vh;
-    gap: 0.65rem;
+    bottom: 3vh;
+    gap: 0.5rem;
   }
 
   .spec-card {
-    padding: 0.9rem 1.2rem;
+    padding: 0.75rem 0.9rem;
   }
 
   .spec-num {
-    font-size: 1.75rem;
+    font-size: 1.45rem;
   }
 
   .spec-label {
-    font-size: 0.68rem;
+    font-size: 0.62rem;
   }
 
   /* Content Sections */
