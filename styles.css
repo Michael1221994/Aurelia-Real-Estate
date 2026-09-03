@@ -439,8 +439,8 @@ img {
 .interior-glow {
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(10, 12, 16, 0.7) 0%, transparent 40%, rgba(255, 200, 120, 0.04) 100%);
-  mix-blend-mode: multiply;
+  background: linear-gradient(180deg, rgba(10, 12, 16, 0.25) 0%, transparent 40%, rgba(10, 12, 16, 0.3) 100%);
+  pointer-events: none;
 }
 
 /* 4. Foreground Framing (Travertine Columns & Olive Trees) */
@@ -1385,7 +1385,8 @@ img {
   }
 
   .interior-glow {
-    background: linear-gradient(0deg, rgba(10, 12, 16, 0.92) 0%, rgba(10, 12, 16, 0.4) 50%, rgba(10, 12, 16, 0.75) 100%);
+    background: linear-gradient(180deg, rgba(10, 12, 16, 0.35) 0%, transparent 45%, rgba(10, 12, 16, 0.4) 100%);
+    pointer-events: none;
   }
 
   /* Hero Section Mobile Tuning */
