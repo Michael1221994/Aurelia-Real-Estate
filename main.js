@@ -485,40 +485,71 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 8. Private Viewing Modal Triggers
-  const modal = document.getElementById('inquireModal');
+  // 8. Modals & Footer Trigger Management
+  const inquireModal = document.getElementById('inquireModal');
+  const legalModal = document.getElementById('legalModal');
+  const pressModal = document.getElementById('pressModal');
+
   const openInquireBtn = document.getElementById('openInquireBtn');
   const ctaInquireBtn = document.getElementById('ctaInquireBtn');
-  const closeModalBtn = document.getElementById('closeModalBtn');
+  const openLegalBtn = document.getElementById('openLegalBtn');
+  const openPressBtn = document.getElementById('openPressBtn');
+  const linkFloorplan = document.getElementById('linkFloorplan');
   const inquireForm = document.getElementById('inquireForm');
 
-  function openModal() {
-    modal.classList.add('open');
-    lenis.stop(); // Pause smooth scrolling while modal is open
+  function openTargetModal(m) {
+    if (!m) return;
+    m.classList.add('open');
+    if (typeof lenis !== 'undefined' && lenis) lenis.stop();
   }
 
-  function closeModal() {
-    modal.classList.remove('open');
-    lenis.start();
+  function closeAllModals() {
+    document.querySelectorAll('.modal-backdrop').forEach((m) => m.classList.remove('open'));
+    if (typeof lenis !== 'undefined' && lenis) lenis.start();
   }
 
-  if (openInquireBtn) openInquireBtn.addEventListener('click', openModal);
-  if (ctaInquireBtn) ctaInquireBtn.addEventListener('click', openModal);
-  if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+  if (openInquireBtn) openInquireBtn.addEventListener('click', () => openTargetModal(inquireModal));
+  if (ctaInquireBtn) ctaInquireBtn.addEventListener('click', () => openTargetModal(inquireModal));
+  if (openLegalBtn) openLegalBtn.addEventListener('click', () => openTargetModal(legalModal));
+  if (openPressBtn) openPressBtn.addEventListener('click', () => openTargetModal(pressModal));
 
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
+  // Architectural Drawings Footer Link: Smooth scroll to #floorplan
+  if (linkFloorplan) {
+    linkFloorplan.addEventListener('click', (e) => {
+      e.preventDefault();
+      const floorplanEl = document.getElementById('floorplan');
+      if (floorplanEl) {
+        if (typeof lenis !== 'undefined' && lenis) {
+          lenis.scrollTo(floorplanEl, { offset: -30 });
+        } else {
+          floorplanEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  }
+
+  // Close modals on close button click
+  document.querySelectorAll('.modal-close').forEach((btn) => {
+    btn.addEventListener('click', closeAllModals);
   });
 
+  // Close modals when clicking backdrop
+  document.querySelectorAll('.modal-backdrop').forEach((backdrop) => {
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) closeAllModals();
+    });
+  });
+
+  // Close modals with Escape key
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    if (e.key === 'Escape') closeAllModals();
   });
 
   if (inquireForm) {
     inquireForm.addEventListener('submit', (e) => {
       e.preventDefault();
       alert('Thank you. A Private Client Partner will contact you within 4 hours.');
-      closeModal();
+      closeAllModals();
       inquireForm.reset();
     });
   }

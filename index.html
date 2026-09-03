@@ -402,19 +402,19 @@
         <p class="footer-copy">&copy; 2025 Aurelia Residences LLC. Offered exclusively by Sotheby’s International Realty. All rights reserved.</p>
       </div>
       <div class="footer-links">
-        <a href="#">Legal & Confidentiality</a>
-        <a href="#">Architectural Drawings</a>
-        <a href="#">Press Kit</a>
+        <button type="button" class="footer-link-btn" id="openLegalBtn">Legal &amp; Confidentiality</button>
+        <a href="#floorplan" class="footer-link-btn" id="linkFloorplan">Architectural Drawings</a>
+        <button type="button" class="footer-link-btn" id="openPressBtn">Press Kit</button>
       </div>
     </div>
   </footer>
 
   <!-- ==============================================
-       MODAL: PRIVATE VIEWING INQUIRY DRAWER
+       MODAL 1: PRIVATE VIEWING INQUIRY DRAWER
   ============================================== -->
   <div class="modal-backdrop" id="inquireModal">
     <div class="modal-card">
-      <button class="modal-close" id="closeModalBtn">&times;</button>
+      <button class="modal-close" aria-label="Close modal">&times;</button>
       <div class="modal-header">
         <span class="modal-badge">CONFIDENTIAL INQUIRY</span>
         <h3 class="modal-title">Request Private Tour</h3>
@@ -456,6 +456,76 @@
           <span>Submit Confidential Request</span>
         </button>
       </form>
+    </div>
+  </div>
+
+  <!-- ==============================================
+       MODAL 2: LEGAL & CONFIDENTIALITY DRAWER
+  ============================================== -->
+  <div class="modal-backdrop" id="legalModal">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <span class="modal-badge">OFFICIAL DISCLOSURE</span>
+        <h3 class="modal-title">Legal &amp; Confidentiality</h3>
+        <p class="modal-desc">Exclusively represented by Sotheby’s International Realty. Regulatory filings and acquisition protocol.</p>
+      </div>
+
+      <div class="modal-body-scroll">
+        <div class="legal-section-block">
+          <h4>Equal Housing &amp; Agency Representation</h4>
+          <p>Sotheby’s International Realty and Aurelia Residences LLC are committed to the letter and spirit of U.S. policy for the achievement of equal housing opportunity throughout the Nation. All offerings are subject to errors, omissions, changes in price, prior sale, or withdrawal without notice.</p>
+        </div>
+
+        <div class="legal-section-block">
+          <h4>Confidentiality &amp; Non-Disclosure Protocol</h4>
+          <p>Due to the high-profile architectural nature of Estate No. 07, on-site walk-throughs and structural disclosures require verified principal registration and execution of a mutual Non-Disclosure Agreement (NDA). Architectural blueprints, structural engineering audits, and proprietary mechanical schematics are protected by copyright.</p>
+        </div>
+
+        <div class="legal-section-block">
+          <h4>Square Footage &amp; Boundary Verification</h4>
+          <p>Stated dimensions (11,200 sq. ft. conditioned interior; 0.82-acre lot area) are architectural estimates calculated from outer perimeter travertine boundaries. Buyer is advised to independently verify all measurements and zoning allowances with private counsel.</p>
+        </div>
+
+        <button type="button" class="btn-primary submit-btn" onclick="alert('Standard Sotheby\'s Principal NDA & Disclosure Package (PDF) downloaded.')">
+          <span>Download NDA Package (PDF)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================================
+       MODAL 3: PRESS KIT & EDITORIAL MEDIA
+  ============================================== -->
+  <div class="modal-backdrop" id="pressModal">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <span class="modal-badge">EDITORIAL &amp; PUBLICATIONS</span>
+        <h3 class="modal-title">Media Press Kit</h3>
+        <p class="modal-desc">Curated architectural photography, editorial transcripts, and technical specifications for accredited publications.</p>
+      </div>
+
+      <div class="modal-body-scroll">
+        <div class="legal-section-block">
+          <h4>Asset Bundle Contents</h4>
+          <ul class="press-asset-list">
+            <li><span>✦</span> High-Resolution 4K Architecture Renders (300 DPI)</li>
+            <li><span>✦</span> Full Vector CAD &amp; SVG Blueprints (Levels 01, 02, Sub-Level)</li>
+            <li><span>✦</span> Materiality &amp; Sourcing Factsheet (Roman Travertine &amp; Bronze)</li>
+            <li><span>✦</span> Architect Curatorial Statement &amp; Design Philosophy</li>
+          </ul>
+        </div>
+
+        <div class="legal-section-block">
+          <h4>Accredited Media Inquiries</h4>
+          <p>For interview requests with the lead design architect or exclusive feature syndication, please direct correspondence to our editorial desk at <strong style="color: var(--gold);">press@aureliaresidences.com</strong>.</p>
+        </div>
+
+        <button type="button" class="btn-primary submit-btn" onclick="alert('Aurelia Digital Press Kit (.ZIP • 48 MB) downloading.')">
+          <span>Download Press Bundle (.ZIP • 48 MB)</span>
+        </button>
+      </div>
     </div>
   </div>
 
