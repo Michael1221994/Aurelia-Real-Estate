@@ -84,11 +84,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Scrubbed layer choreography
   heroTl
-    // Phase 1: Foreground framing columns & olive trees fly dramatically past camera
-    .to('.layer-foreground-frame', { scale: 2.35, y: -15, opacity: 0, ease: 'power1.inOut' }, 0)
+    // Phase 1: Foreground framing columns dolly past camera: scale from 1.0 to 2.8, fly off sides
+    .to('.framing-dolly-wrap', {
+      scale: 2.8,
+      y: -35,
+      opacity: 0,
+      ease: 'power2.in',
+    }, 0)
 
-    // Phase 1: Villa architecture pulls closer into view
-    .to('.layer-villa', { scale: 1.3, y: -25, ease: 'power1.out' }, 0)
+    // Phase 1: Villa architecture pulls closer into view (dolly in onto pool terrace)
+    .to('.villa-structure', {
+      scale: 1.35,
+      y: -25,
+      ease: 'power1.out',
+    }, 0)
 
     // Phase 1: Horizon ocean & distant mountains remain steady
     .to('.layer-horizon', { scale: 1.05, y: -8, ease: 'none' }, 0)
@@ -96,19 +105,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Keep hero text ("Where Architecture Meets Horizon" + "A sculptural sanctuary...")
     // fully legible initially, then fade out gently as camera pushes in
-    .to('#heroOverlay', { opacity: 0, y: -50, filter: 'blur(5px)', duration: 0.35, ease: 'power2.inOut' }, 0.2)
+    .to('#heroOverlay', { opacity: 0, y: -50, filter: 'blur(5px)', duration: 0.35, ease: 'power2.inOut' }, 0.18)
 
     // Phase 2: Reveal the Pinned Luxury Property Metric Deck
     .fromTo(
       '#heroSpecsDeck',
       { opacity: 0, y: 35 },
       { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' },
-      0.45
+      0.4
     )
 
     // Phase 3: Hold specs briefly, then gently exit as next section glides up
     .to('#heroSpecsDeck', { opacity: 0, y: -25, duration: 0.22, ease: 'power2.in' }, 0.82)
-    .to('.multiplane-scene', { scale: 1.03, filter: 'brightness(0.88)', ease: 'none' }, 0.85);
+    .to('.multiplane-scene', { scale: 1.03, filter: 'brightness(0.92)', ease: 'none' }, 0.85);
 
   // 4. Interactive Mouse Parallax & Gyro Physics Loop
   let targetNormX = 0;

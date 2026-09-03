@@ -449,7 +449,17 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  pointer-events: none;
+}
+
+.framing-dolly-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transform-origin: center center;
+  will-change: transform, opacity;
 }
 
 .framing-columns-img {
