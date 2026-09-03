@@ -202,10 +202,81 @@ document.addEventListener('DOMContentLoaded', () => {
       clearance: "14' – 22' Vaulted",
       terraces: '3,800 Sq. Ft.',
       hotspots: [
-        { top: '40%', left: '35%', title: 'Grand Salon', desc: 'Double-height glass pavilion' },
-        { top: '65%', left: '60%', title: 'Zero-Edge Pool', desc: '110-ft cantilevered lap pool' },
-        { top: '30%', left: '70%', title: 'Chef Kitchen', desc: 'Paonazzo marble culinary studio' },
+        { top: '40%', left: '35%', title: 'Grand Salon', desc: 'Double-height glass pavilion with monolithic travertine fireplace' },
+        { top: '65%', left: '60%', title: 'Zero-Edge Pool', desc: '110-ft cantilevered oceanfront lap pool with baja shelf' },
+        { top: '30%', left: '70%', title: 'Chef Kitchen', desc: 'Calacatta Paonazzo marble culinary studio with prep pantry' },
       ],
+      svg: `
+        <svg viewBox="0 0 800 480" class="blueprint-svg" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="poolHatch" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+              <line x1="0" y1="0" x2="0" y2="8" stroke="rgba(126, 196, 248, 0.3)" stroke-width="1.5" />
+            </pattern>
+            <pattern id="terracePattern" width="16" height="16" patternUnits="userSpaceOnUse">
+              <rect width="16" height="16" fill="none" stroke="rgba(197, 168, 128, 0.08)" stroke-width="0.5" />
+            </pattern>
+          </defs>
+
+          <!-- Pacific Ocean Cliffline -->
+          <path d="M 20,460 Q 240,445 420,465 T 780,445" fill="none" stroke="rgba(142, 149, 160, 0.35)" stroke-dasharray="6,4" stroke-width="1.5" />
+          <text x="35" y="450" fill="rgba(142, 149, 160, 0.5)" font-size="9" letter-spacing="1">PACIFIC CLIFF EDGE SIGHTLINE</text>
+
+          <!-- Outdoor Travertine Terrace -->
+          <rect x="70" y="230" width="660" height="210" fill="url(#terracePattern)" stroke="rgba(197, 168, 128, 0.25)" stroke-width="1" />
+          <text x="85" y="250" fill="#c5a880" font-size="10" font-weight="600" letter-spacing="1.5">OUTDOOR LIVING & POOL TERRACE</text>
+
+          <!-- Cantilevered Zero-Edge Pool -->
+          <rect x="340" y="270" width="340" height="135" fill="url(#poolHatch)" stroke="#7ec4f8" stroke-width="2" rx="2" />
+          <line x1="340" y1="300" x2="385" y2="300" stroke="#7ec4f8" stroke-width="1.5" />
+          <line x1="340" y1="320" x2="385" y2="320" stroke="#7ec4f8" stroke-width="1.5" />
+          <line x1="340" y1="340" x2="385" y2="340" stroke="#7ec4f8" stroke-width="1.5" />
+          <text x="440" y="345" fill="#7ec4f8" font-size="11" font-weight="600" letter-spacing="1.5">110' ZERO-EDGE POOL</text>
+          <text x="465" y="365" fill="rgba(126, 196, 248, 0.6)" font-size="9">DEPTH: 4' - 9'</text>
+
+          <!-- Firepit Lounge -->
+          <circle cx="180" cy="340" r="32" fill="rgba(197, 168, 128, 0.08)" stroke="rgba(197, 168, 128, 0.4)" stroke-width="1.5" />
+          <circle cx="180" cy="340" r="14" fill="rgba(255, 140, 60, 0.2)" stroke="#c5a880" stroke-width="1.5" />
+          <text x="145" y="390" fill="#8e95a0" font-size="9" letter-spacing="1">FIREPIT LOUNGE</text>
+
+          <!-- Main Pavilion Structure (Travertine Exterior Walls) -->
+          <path d="M 70,50 L 730,50 L 730,230 L 70,230 Z" fill="rgba(18, 22, 29, 0.85)" stroke="#c5a880" stroke-width="2.5" />
+
+          <!-- Arrival Foyer & Motor Court Partitions -->
+          <line x1="70" y1="140" x2="220" y2="140" stroke="rgba(197, 168, 128, 0.6)" stroke-width="2" />
+          <line x1="220" y1="50" x2="220" y2="230" stroke="rgba(197, 168, 128, 0.6)" stroke-width="2" />
+          <!-- Entry Doors -->
+          <path d="M 120,50 A 25,25 0 0,1 145,75 L 145,50" fill="none" stroke="#dfc8a8" stroke-width="1.5" />
+          <path d="M 170,50 A 25,25 0 0,0 145,75 L 145,50" fill="none" stroke="#dfc8a8" stroke-width="1.5" />
+          <text x="100" y="105" fill="#f4f2ed" font-size="11" font-weight="600" letter-spacing="1">ARRIVAL FOYER</text>
+          <text x="100" y="190" fill="#8e95a0" font-size="9">POWDER RM & WARDROBE</text>
+
+          <!-- Grand Ocean Salon (Center) -->
+          <line x1="530" y1="50" x2="530" y2="230" stroke="rgba(197, 168, 128, 0.6)" stroke-width="2" />
+          <!-- Fireplace Hearth -->
+          <rect x="220" y="115" width="14" height="50" fill="#c5a880" stroke="#f4f2ed" stroke-width="1" />
+          <!-- Motorized Glass Wall Track -->
+          <line x1="230" y1="230" x2="520" y2="230" stroke="#8fa4b0" stroke-width="3" stroke-dasharray="6,4" />
+          <text x="290" y="222" fill="#8fa4b0" font-size="9" letter-spacing="1">MOTORIZED SLIDING GLASS TRACK (50 FT)</text>
+          
+          <text x="290" y="120" fill="#f4f2ed" font-size="13" font-weight="600" letter-spacing="1.5">GRAND OCEAN SALON</text>
+          <text x="290" y="140" fill="#8e95a0" font-size="9.5">24' VAULTED CEILINGS • MONOLITHIC HEARTH</text>
+          <text x="290" y="160" fill="rgba(197, 168, 128, 0.85)" font-size="9" font-family="monospace">DIM: 38'-0" x 30'-0"</text>
+
+          <!-- Chef's Culinary Studio (Right) -->
+          <rect x="570" y="110" width="115" height="42" fill="rgba(197, 168, 128, 0.2)" stroke="#c5a880" stroke-width="1.5" rx="2" />
+          <text x="590" y="135" fill="#f4f2ed" font-size="10" font-weight="600">ISLAND BAR</text>
+          <line x1="680" y1="50" x2="680" y2="160" stroke="rgba(197, 168, 128, 0.5)" stroke-width="1.5" />
+          <text x="560" y="85" fill="#f4f2ed" font-size="11" font-weight="600" letter-spacing="1">CHEF'S KITCHEN</text>
+          <text x="560" y="200" fill="#8e95a0" font-size="9.5">FORMAL DINING PAVILION</text>
+
+          <!-- North Arrow -->
+          <g transform="translate(745, 80)">
+            <circle cx="0" cy="0" r="14" fill="none" stroke="rgba(197, 168, 128, 0.4)" stroke-width="1" />
+            <path d="M 0,-12 L 4,0 L -4,0 Z" fill="#c5a880" />
+            <text x="-4" y="-15" fill="#c5a880" font-size="8" font-weight="bold">N</text>
+          </g>
+        </svg>
+      `,
     },
     level2: {
       name: 'Level 02 • Private Suites & Decks',
@@ -214,10 +285,61 @@ document.addEventListener('DOMContentLoaded', () => {
       clearance: "11' High Ceilings",
       terraces: '1,400 Sq. Ft.',
       hotspots: [
-        { top: '35%', left: '40%', title: 'Master Sanctuary', desc: 'Floating corner glass bedroom' },
-        { top: '45%', left: '75%', title: 'Sunset Deck', desc: 'Private rooftop firepit' },
-        { top: '60%', left: '25%', title: 'En-Suite Gallery', desc: 'Guest wing with courtyard views' },
+        { top: '35%', left: '40%', title: 'Master Sanctuary', desc: 'Floating corner glass bedroom with wraparound terrace' },
+        { top: '45%', left: '75%', title: 'Sunset Deck', desc: 'Private rooftop firepit terrace overlooking the coastline' },
+        { top: '60%', left: '25%', title: 'En-Suite Gallery', desc: 'Guest wing with courtyard view and marble bath' },
       ],
+      svg: `
+        <svg viewBox="0 0 800 480" class="blueprint-svg" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="deckPattern2" width="14" height="14" patternUnits="userSpaceOnUse">
+              <rect width="14" height="14" fill="none" stroke="rgba(197, 168, 128, 0.07)" stroke-width="0.5" />
+            </pattern>
+          </defs>
+
+          <!-- Cantilevered Overhang Projections (Dashed) -->
+          <rect x="60" y="50" width="680" height="340" fill="none" stroke="rgba(197, 168, 128, 0.2)" stroke-dasharray="6,4" stroke-width="1" />
+          <text x="80" y="420" fill="rgba(142, 149, 160, 0.5)" font-size="9">CANTILEVERED STRUCTURAL PROFILE OVER POOL DECK</text>
+
+          <!-- Primary Master Sanctuary (Left Wing - Cantilevered Over Cliff) -->
+          <rect x="70" y="60" width="280" height="280" fill="rgba(18, 22, 29, 0.9)" stroke="#c5a880" stroke-width="2.5" />
+          <rect x="70" y="250" width="280" height="90" fill="url(#deckPattern2)" stroke="rgba(197, 168, 128, 0.3)" stroke-width="1" />
+          <text x="90" y="100" fill="#f4f2ed" font-size="13" font-weight="600" letter-spacing="1.5">PRIMARY MASTER SANCTUARY</text>
+          <text x="90" y="120" fill="#8e95a0" font-size="9.5">FLOATING CORNER GLASS SUITE</text>
+          <text x="90" y="140" fill="rgba(197, 168, 128, 0.85)" font-size="9" font-family="monospace">DIM: 24'-0" x 22'-0"</text>
+          <!-- Freestanding Tub Symbol -->
+          <rect x="90" y="165" width="50" height="26" rx="13" fill="none" stroke="#7ec4f8" stroke-width="1.5" />
+          <text x="100" y="181" fill="#7ec4f8" font-size="8">BATH</text>
+          <text x="160" y="180" fill="#8e95a0" font-size="9">DUAL DRESSING GALLERIES</text>
+          <text x="90" y="290" fill="#c5a880" font-size="9.5" letter-spacing="1">PRIVATE SUNSET BALCONY</text>
+
+          <!-- Central Open-Air Gallery Bridge (Overlooking Grand Salon Below) -->
+          <rect x="350" y="120" width="130" height="160" fill="rgba(10, 12, 16, 0.6)" stroke="rgba(142, 149, 160, 0.4)" stroke-dasharray="6,4" stroke-width="1.5" />
+          <text x="365" y="195" fill="rgba(142, 149, 160, 0.6)" font-size="10" font-weight="600" letter-spacing="1">OPEN TO SALON</text>
+          <text x="375" y="210" fill="rgba(142, 149, 160, 0.4)" font-size="8.5">BELOW</text>
+          <!-- Glass Bridge Path -->
+          <rect x="350" y="60" width="130" height="60" fill="rgba(197, 168, 128, 0.15)" stroke="#c5a880" stroke-width="1.5" />
+          <text x="370" y="95" fill="#f4f2ed" font-size="9" font-weight="600">GALLERY BRIDGE</text>
+
+          <!-- Junior Suites Wing (Right) -->
+          <rect x="480" y="60" width="260" height="135" fill="rgba(18, 22, 29, 0.9)" stroke="#c5a880" stroke-width="2" />
+          <text x="500" y="95" fill="#f4f2ed" font-size="11" font-weight="600">JUNIOR SUITE 02</text>
+          <text x="500" y="115" fill="#8e95a0" font-size="9">EN-SUITE BATH • PRIVATE TERRACE</text>
+          <text x="500" y="135" fill="rgba(197, 168, 128, 0.85)" font-size="8.5" font-family="monospace">DIM: 18'-6" x 16'-0"</text>
+
+          <rect x="480" y="195" width="260" height="145" fill="rgba(18, 22, 29, 0.9)" stroke="#c5a880" stroke-width="2" />
+          <text x="500" y="230" fill="#f4f2ed" font-size="11" font-weight="600">JUNIOR SUITE 03</text>
+          <text x="500" y="250" fill="#8e95a0" font-size="9">EN-SUITE BATH • COURTYARD VIEW</text>
+          <text x="500" y="270" fill="rgba(197, 168, 128, 0.85)" font-size="8.5" font-family="monospace">DIM: 19'-0" x 15'-6"</text>
+
+          <!-- North Arrow -->
+          <g transform="translate(745, 80)">
+            <circle cx="0" cy="0" r="14" fill="none" stroke="rgba(197, 168, 128, 0.4)" stroke-width="1" />
+            <path d="M 0,-12 L 4,0 L -4,0 Z" fill="#c5a880" />
+            <text x="-4" y="-15" fill="#c5a880" font-size="8" font-weight="bold">N</text>
+          </g>
+        </svg>
+      `,
     },
     level3: {
       name: 'Sub-Level • Wellness & Cellar Vault',
@@ -226,20 +348,76 @@ document.addEventListener('DOMContentLoaded', () => {
       clearance: "12' Board-Form Concrete",
       terraces: 'Sunken Zen Atrium',
       hotspots: [
-        { top: '45%', left: '50%', title: 'Wine Sanctuary', desc: '1,200-bottle climate chamber' },
-        { top: '35%', left: '25%', title: 'Thermal Spa', desc: 'Cedar sauna & cold-plunge pools' },
-        { top: '60%', left: '70%', title: 'Cinema Salon', desc: 'Acoustically tuned 12-seat theater' },
+        { top: '45%', left: '50%', title: 'Wine Sanctuary', desc: '1,200-bottle climate-controlled chamber with sommelier tasting room' },
+        { top: '35%', left: '25%', title: 'Thermal Spa', desc: 'Finnish cedar sauna, steam bath & cold-plunge hydrotherapy pools' },
+        { top: '60%', left: '70%', title: 'Cinema Salon', desc: 'Acoustically tuned 12-seat private theater with 4K laser projection' },
       ],
+      svg: `
+        <svg viewBox="0 0 800 480" class="blueprint-svg" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="stoneHatch" width="10" height="10" patternTransform="rotate(30)" patternUnits="userSpaceOnUse">
+              <line x1="0" y1="0" x2="0" y2="10" stroke="rgba(142, 149, 160, 0.2)" stroke-width="1" />
+            </pattern>
+          </defs>
+
+          <!-- Excavated Cliff Bedrock Foundation -->
+          <path d="M 50,40 L 750,40 L 750,440 L 50,440 Z" fill="url(#stoneHatch)" stroke="rgba(142, 149, 160, 0.4)" stroke-width="2" />
+          <text x="70" y="420" fill="rgba(142, 149, 160, 0.6)" font-size="9.5" letter-spacing="1.5">EXCAVATED CLIFF STONE SUBTERRANEAN FOUNDATION</text>
+
+          <!-- Thermal Spa & Hydrotherapy Suite (Left) -->
+          <rect x="80" y="70" width="270" height="310" fill="rgba(18, 22, 29, 0.95)" stroke="#c5a880" stroke-width="2.5" />
+          <text x="100" y="110" fill="#f4f2ed" font-size="13" font-weight="600" letter-spacing="1.5">HYDROTHERAPY SPA SUITE</text>
+          <!-- Finnish Cedar Sauna -->
+          <rect x="100" y="130" width="110" height="85" fill="rgba(197, 168, 128, 0.15)" stroke="#c5a880" stroke-width="1.5" />
+          <text x="110" y="175" fill="#c5a880" font-size="10" font-weight="600">CEDAR SAUNA</text>
+          <!-- Cold Plunge Pool -->
+          <rect x="225" y="130" width="100" height="85" fill="rgba(126, 196, 248, 0.2)" stroke="#7ec4f8" stroke-width="1.5" />
+          <text x="235" y="175" fill="#7ec4f8" font-size="10" font-weight="600">COLD PLUNGE</text>
+          <text x="100" y="250" fill="#8e95a0" font-size="9.5">STEAM ROOM • HEATED MARBLE BEDS</text>
+
+          <!-- 1,200-Bottle Climate-Controlled Wine Vault (Center) -->
+          <rect x="370" y="70" width="180" height="310" fill="rgba(18, 22, 29, 0.95)" stroke="#c5a880" stroke-width="2.5" />
+          <rect x="380" y="80" width="160" height="290" fill="none" stroke="rgba(197, 168, 128, 0.4)" stroke-dasharray="4,4" stroke-width="1" />
+          <!-- Sommelier Tasting Table -->
+          <circle cx="460" cy="220" r="30" fill="rgba(197, 168, 128, 0.2)" stroke="#c5a880" stroke-width="1.5" />
+          <text x="440" y="225" fill="#f4f2ed" font-size="9" font-weight="600">TABLE</text>
+          <text x="390" y="115" fill="#f4f2ed" font-size="12" font-weight="600" letter-spacing="1">1,200-BOTTLE</text>
+          <text x="390" y="135" fill="#c5a880" font-size="10">WINE SANCTUARY</text>
+          <text x="390" y="155" fill="#8e95a0" font-size="8.5">55°F CONSTANT CLIMATE</text>
+
+          <!-- Dolby Atmos Private Screening Room (Right) -->
+          <rect x="570" y="70" width="160" height="310" fill="rgba(18, 22, 29, 0.95)" stroke="#c5a880" stroke-width="2.5" />
+          <!-- Cinema Screen Curve -->
+          <path d="M 585,90 Q 650,105 715,90" fill="none" stroke="#f4f2ed" stroke-width="3" />
+          <text x="615" y="125" fill="#f4f2ed" font-size="11" font-weight="600" letter-spacing="1">SCREEN</text>
+          <!-- Tiered Seating Rows -->
+          <rect x="590" y="160" width="120" height="30" fill="rgba(142, 149, 160, 0.15)" stroke="rgba(142, 149, 160, 0.4)" stroke-width="1" rx="4" />
+          <rect x="590" y="210" width="120" height="30" fill="rgba(142, 149, 160, 0.15)" stroke="rgba(142, 149, 160, 0.4)" stroke-width="1" rx="4" />
+          <rect x="590" y="260" width="120" height="30" fill="rgba(142, 149, 160, 0.15)" stroke="rgba(142, 149, 160, 0.4)" stroke-width="1" rx="4" />
+          <text x="590" y="325" fill="#8e95a0" font-size="9">12-SEAT PRIVATE CINEMA</text>
+        </svg>
+      `,
     },
   };
 
   const floorTabs = document.querySelectorAll('.floor-tab');
   const floorDetails = document.getElementById('floorDetails');
   const blueprintCanvas = document.getElementById('blueprintCanvas');
+  const blueprintSvgContainer = document.getElementById('blueprintSvgContainer');
 
   function updateFloor(floorKey) {
     const data = floorData[floorKey];
     if (!data) return;
+
+    // Render Architectural SVG Blueprint with smooth fade
+    if (blueprintSvgContainer && data.svg) {
+      blueprintSvgContainer.innerHTML = data.svg;
+      gsap.fromTo(
+        blueprintSvgContainer.querySelector('svg'),
+        { opacity: 0, scale: 0.97 },
+        { opacity: 1, scale: 1, duration: 0.35, ease: 'power2.out' }
+      );
+    }
 
     // Fade out details slightly
     gsap.to(floorDetails, {
@@ -278,6 +456,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Initialize Level 01 blueprint immediately on load
+  updateFloor('level1');
+
   floorTabs.forEach((tab) => {
     tab.addEventListener('click', () => {
       floorTabs.forEach((t) => t.classList.remove('active'));
@@ -286,6 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
       updateFloor(floorKey);
     });
   });
+
 
   // 7. Materiality Accordion
   const accHeaders = document.querySelectorAll('.acc-header');

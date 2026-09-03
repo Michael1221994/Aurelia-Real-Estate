@@ -874,6 +874,26 @@ img {
   background-size: 30px 30px;
 }
 
+.blueprint-svg-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.blueprint-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(197, 168, 128, 0.12));
+}
+
 /* Interactive Hotspot Pins */
 .hotspot {
   position: absolute;
