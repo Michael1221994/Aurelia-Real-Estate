@@ -548,22 +548,25 @@ img {
   justify-content: center;
   align-items: flex-start;
   padding-left: 6vw;
-  max-width: 720px;
+  max-width: 760px;
   z-index: 15;
   pointer-events: none;
+  background: radial-gradient(ellipse at 12% 52%, rgba(6, 8, 12, 0.65) 0%, rgba(6, 8, 12, 0.3) 45%, transparent 75%);
 }
 
 .hero-tag {
   font-size: 0.78rem;
   letter-spacing: 0.28em;
   font-weight: 600;
-  color: var(--gold);
+  color: var(--gold-light);
   margin-bottom: 1.5rem;
   display: inline-block;
   padding: 0.35rem 0.8rem;
-  background: rgba(197, 168, 128, 0.1);
+  background: rgba(10, 12, 16, 0.65);
   border: 1px solid var(--border-gold);
   border-radius: 2px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .hero-title {
@@ -571,9 +574,10 @@ img {
   font-size: clamp(3.6rem, 6.5vw, 6.8rem);
   line-height: 0.98;
   font-weight: 400;
-  color: var(--text-main);
+  color: #ffffff;
   margin-bottom: 1.8rem;
   letter-spacing: -0.02em;
+  text-shadow: 0 4px 28px rgba(0, 0, 0, 0.92), 0 2px 8px rgba(0, 0, 0, 0.98);
 }
 
 .title-line {
@@ -582,16 +586,18 @@ img {
 
 .italic-line {
   font-style: italic;
-  color: var(--gold-light);
+  color: #ffffff;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.95), 0 2px 10px rgba(0, 0, 0, 0.98);
 }
 
 .hero-description {
   font-size: 1.15rem;
   line-height: 1.6;
-  color: #c0c6ce;
+  color: #e5e9f0;
   margin-bottom: 2.5rem;
   font-weight: 300;
   max-width: 540px;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.98);
 }
 
 /* Scroll Prompt */
